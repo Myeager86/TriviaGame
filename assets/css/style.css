@@ -1,0 +1,10 @@
+.body {
+    background-image: url("../images/background.jpeg");
+}
+#game-container {
+    background-color: azure;
+}
+
+.questions {
+    font-size: 25px;
+}
