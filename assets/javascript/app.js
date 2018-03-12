@@ -35,18 +35,6 @@ $(document).ready(function(){
 
         $('#timer_number').html(count + " Seconds");
 
-			$("#done-button").on("click", function(){
-
-            // Stop the countdown and run the timeUp function
-            timerRunning = false;
-            count = 0; 
-            timeUp();
-            $("#game-container").hide();
-            $("#timer_number").text("00:00");
-            return;
-
-			});
-
 
 			// Finish the game after the timer reaches 0
 			if(count == 0){
@@ -65,6 +53,17 @@ $(document).ready(function(){
 	}
 
 
+    $("#done-button").on("click", function(){
+        // Stop the countdown and run the timeUp function
+        timerRunning = false;
+        count = 0; 
+        timeUp();
+        $("#game-container").hide();
+        $("#timer_number").text("00:00");
+        return;
+
+    });
+
 	// Show the countdown, increment is 1 second
 	function startCountdown(){
 
@@ -78,21 +77,32 @@ $(document).ready(function(){
 
 
 		// Which radio buttons are checked 
-		var Q1 = $('questionForm input:radio[name="q1"]:checked').val();
-		var Q2 = $('questionForm input:radio[name="q2"]:checked').val();
-		var Q3 = $('questionForm input:radio[name="q3"]:checked').val();
-		var Q4 = $('questionForm input:radio[name="q4"]:checked').val();
-		var Q5 = $('questionForm input:radio[name="q5"]:checked').val();
-		var Q6 = $('questionForm input:radio[name="q6"]:checked').val();
+		var Q1 = $('#questionForm input:radio[name="q1"]:checked').val();
+		var Q2 = $('#questionForm input:radio[name="q2"]:checked').val();
+		var Q3 = $('#questionForm input:radio[name="q3"]:checked').val();
+		var Q4 = $('#questionForm input:radio[name="q4"]:checked').val();
+		var Q5 = $('#questionForm input:radio[name="q5"]:checked').val();
+		var Q6 = $('#questionForm input:radio[name="q6"]:checked').val();
 
+        console.log(
+            'Q1', Q1,
+            '\nQ2', Q2,
+            '\nQ3', Q3,
+            '\nQ4', Q4,
+            '\nQ5', Q5,
+            '\nQ6', Q6
+        );
 		// right/wrong answers determined here
 		if(Q1 == undefined){
-			unansweredCount++;
+            console.log("Q1 == undefined")
+            unansweredCount++;
 		}
 		else if(Q1 == "Greenland"){
+            console.log('Q1 == "Greenland"')
 			correctCount++;
 		}
 		else{
+            console.log("else")
 			wrongCount++;
 		}
 
